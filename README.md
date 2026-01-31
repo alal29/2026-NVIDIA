@@ -88,6 +88,17 @@ The desginated GPU Acceleration PIC on your team is responsible for majority of 
 
 For any questions or additional assistance using Brev, see the [Brev Console Reference](https://docs.nvidia.com/brev/latest/console.html) or reach out to the NVIDIA team on discord.
 
+## Submitting Instructions and Deadlines
+
+
+> **By 11am eastern time on Sat Jan 31: Team Intent** The Project Lead should fork this repository and share the link along with the team member's discord names with the judges in a DM on discord (do not post to the Discord channel unless you want all the other participants to see your work).  
+
+> **By 10pm eastern on Sat Jan 31, Phase 1 is due.  Submit what you have finished by that point to have your work assessed for access to your team credits.  
+
+> **By 10am eastern on Sun Feb 1, Phase 2 is due.** The Project Lead should ensure that the forked repository contains all of the deliverables and should DM the judges to confirm their project completion.  Judges will use the forked repository for grading. 
+
+Please see the [Deliverables Checklist](/team-submissions/README.md) in the team-submissions folder for more information about the evaluation criteria of each deliverable.
+
 ## Resources
 ### CUDA-Q    
 
