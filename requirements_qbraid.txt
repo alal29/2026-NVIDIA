@@ -1,0 +1,6 @@
+cudaq
+numpy
+matplotlib
+pandas
+jupyter
+ipykernel
