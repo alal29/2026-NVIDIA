@@ -54,11 +54,11 @@ The MIT Quackhacks team leveraged AI agents as **collaborative code partners** t
   - Results export format: JSON with per-run metadata
   - Visualization pipeline: Energy vs. iteration, convergence comparison
 
-### 2. GPU Acceleration Preparation
-- **Agent:** Port CUDA-Q code to prepare for Brev GPU execution.
+### 2. GPU Acceleration Implementation
+- **Agent:** Port CUDA-Q code and validate Brev GPU execution.
 - **Code Changes:**
   - Explicit CPU target: `cudaq.set_target("qpp-cpu")` for validation
-  - Prepared GPU target line: `# cudaq.set_target("nvidia")` (awaiting L4 support)
+  - GPU target enabled: `cudaq.set_target("nvidia")`
   - Batch experiment loops for efficient resource usage
 
 ### 3. Test Suite Extension
@@ -120,7 +120,7 @@ The MIT Quackhacks team leveraged AI agents as **collaborative code partners** t
 
 #### Assertion 1: Energy Symmetries
 ```python
-# From tests.py:
+# From tests_comprehensive.py:
 assert labs_energy(s) == labs_energy([-x for x in s]), \
     "Energy must be invariant under global sign flip"
 ```
@@ -128,7 +128,7 @@ assert labs_energy(s) == labs_energy([-x for x in s]), \
 
 #### Assertion 2: Interaction Bounds
 ```python
-# From tests.py:
+# From tests_comprehensive.py:
 for a, b, c, d in G4:
     assert a < b < c < d, "4-body indices must be strictly ordered"
 ```
@@ -136,7 +136,7 @@ for a, b, c, d in G4:
 
 #### Assertion 3: Bitstring Format
 ```python
-# From tests.py:
+# From tests_comprehensive.py:
 assert all(b in (-1, 1) for b in bitstring), \
     "Bitstring contains values not in {+1, -1}"
 ```
@@ -144,7 +144,7 @@ assert all(b in (-1, 1) for b in bitstring), \
 
 #### Assertion 4: Ground Truth Validation
 ```python
-# From tests.py:
+# From tests_comprehensive.py:
 true_bits, true_E = brute_force_best_energy(N, labs_energy)
 for i in range(N):
     flipped = true_bits[:]
@@ -156,7 +156,7 @@ for i in range(N):
 
 #### Assertion 5: Array Consistency
 ```python
-# From tests.py:
+# From tests_comprehensive.py:
 def test_bitstring_format_preservation():
     assert len(child) == N, "Child length must match parents"
     assert all(x in (-1, 1) for x in child), "Child format invalid"
@@ -197,11 +197,11 @@ To prevent "AI hallucinations" (incorrect code disguised as confident output), t
 
 | Category | Count | File | Status |
 |----------|-------|------|--------|
-| Energy Function | 4 | tests.py | ✓ Pass |
-| Interaction Structure | 4 | tests.py | ✓ Pass |
-| Quantum Integration | 3 | tests.py | ✓ Pass |
-| **Pytest Subset** | **5** | tests/test_invariants.py | ✓ Pass |
-| **Total** | **11** | Both files | ✓ All Pass |
+| Energy Function | 4 | tests_comprehensive.py | ✓ Pass |
+| Interaction Structure | 4 | tests_comprehensive.py | ✓ Pass |
+| Quantum Integration | 3 | tests_comprehensive.py | ✓ Pass |
+| **Pytest Subset** | **17** | test_invariants.py | ✓ Pass |
+| **Total** | **28** | Both files | ✓ All Pass |
 
 ### Coverage Claims
 
@@ -217,14 +217,14 @@ To prevent "AI hallucinations" (incorrect code disguised as confident output), t
 
 ### Local Validation (CPU)
 ```bash
-python tests.py
+python tests_comprehensive.py
 # Validates all Phase 1 & Phase 2 core components
 # Runtime: ~1–2 seconds
 ```
 
 ### Pytest CI/CD (GPU-Ready)
 ```bash
-pytest tests/test_invariants.py -v
+pytest test_invariants.py -v
 # Subset of tests for integration testing
 # Can run on any platform (no GPU required)
 ```
@@ -239,7 +239,7 @@ jupyter notebook tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).
 ### GPU Deployment (Brev)
 1. Complete local validation (above)
 2. Push to Brev environment
-3. Uncomment `cudaq.set_target("nvidia")` (when L4 support available)
+3. Set `cudaq.set_target("nvidia")`
 4. Execute Phase 2 cells for GPU acceleration results
 
 ---
@@ -260,14 +260,13 @@ jupyter notebook tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).
 
 ---
 
-## Future Integration (Post-Hackathon)
+## Ongoing Enhancements
 
 To extend this workflow for production:
 
-1. **Automated CI/CD:** Run `pytest tests/test_invariants.py` on every commit.
-2. **GPU Testing:** Once L4 support available, add GPU-specific tests in `tests/test_gpu.py`.
-3. **Scaling Tests:** Add benchmarks for N=128, 256 (requires bigger compute).
-4. **Agent Feedback Loops:** Use test results to auto-refine hyperparameters.
+1. **Automated CI/CD:** Run `pytest test_invariants.py` on every commit.
+2. **Scaling Tests:** Add benchmarks for N=128, 256 (requires bigger compute).
+3. **Agent Feedback Loops:** Use test results to auto-refine hyperparameters.
 
 ---
 

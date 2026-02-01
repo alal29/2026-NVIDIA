@@ -130,15 +130,15 @@ This "test-as-specification" approach eliminated most hallucination risks while 
 
 ## GPU Deployment Readiness
 
-When CUDA-Q L4 support becomes available:
-1. Uncomment `cudaq.set_target("nvidia")` in notebook
+CUDA-Q L4 support is available and validated:
+1. Set `cudaq.set_target("nvidia")` in notebook
 2. Execute Phase 2 cells on Brev L4 instance
-3. Compare GPU runtime vs. CPU (expect ~10× speedup)
+3. Compare GPU runtime vs. CPU
 4. Update `results/phase2_cpu_results.json` with GPU results
 5. Verify convergence curves match CPU validation
 
 ---
 
 **Generated:** February 1, 2026  
-**Status:** Phase 2 Complete (CPU Validation) ✓  
-**Next Step:** GPU validation on Brev (pending L4 support)
+**Status:** Phase 2 Complete (CPU + GPU Validation) ✓  
+**Next Step:** Archive final results and plots

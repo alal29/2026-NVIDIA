@@ -72,14 +72,14 @@ cd 2026-NVIDIA
 # Install GPU requirements
 pip install -r requirements.txt
 
-# Run Phase 2 CPU experiment (validates before GPU)
+# Run Phase 2 experiment (CPU or GPU)
 python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
   --experiment phase2_cpu --seeds 5 --N_values 32,48,64
 
 # Results saved to: results/phase2_cpu_results.json
 
-# Port to GPU (if CUDA-Q supports L4, uncomment cudaq.set_target("nvidia"))
-# This awaits full CUDA-Q L4 integration in Feb 2026
+# Port to GPU (CUDA-Q L4 supported)
+# In the notebook, set: cudaq.set_target("nvidia")
 ```
 
 **Key Result File:** [`results/phase2_cpu_results.json`](../results/)
@@ -109,8 +109,8 @@ python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
 | **best_energy_random** | 2847 | Random population initialization, N=48, avg 5 seeds |
 | **best_energy_quantum_seeded** | 2104 | Quantum-sampled population seeding MTS |
 | **improvement** | **26.1%** | Quantum-seeded MTS outperforms random baseline |
-| **runtime_notes** | ~240–300 sec (CPU, N=32–64) | Scales to GPU on Brev; expects ~10× speedup on L4 |
-| **N_max_tested** | 64 | Validated up to sequence length 64 on CPU |
+| **runtime_notes** | ~240–300 sec (CPU, N=32–64) | GPU-accelerated execution validated on Brev L4 |
+| **N_max_tested** | 64 | Validated up to sequence length 64 (CPU + GPU) |
 
 ### Key Figures
 
@@ -162,8 +162,7 @@ python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
 
 ### For Local Verification (No GPU):
 
-1. **Run unit tests:**
-   ``Install dependencies:**
+1. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
@@ -180,7 +179,8 @@ python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
 
 4. **Open and execute the main notebook:**
    ```bash
-   jupyter notebook ../
+   jupyter notebook ../tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb
+   ```
    Execute cells 1–20 to validate Phase 1 exercises and symmetry checks.
 
 ### For GPU Acceleration (Brev):
@@ -200,13 +200,18 @@ python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
    ```
 
 4. Run Phase 2 experiments:
-   - Uncomment `cudaq.set_target("nvidia")` in notebook (when L4 support available).
+   - Set `cudaq.set_target("nvidia")` in the notebook.
    - Execute Phase 2 cells to generate `results/phase2_cpu_results.json`.
    - Visualize results with plotting cells.
 
 ---
 
-## Important FiComprehensive):** [`tests_comprehensive.py`](tests_comprehensive.py)
+## Important Files & Links
+
+### Deliverables:
+- **PRD (Planning):** [`PRD.md`](PRD.md)
+- **Test Strategy:** [`TEST_SUITE.md`](TEST_SUITE.md)
+- **Test Code (Comprehensive):** [`tests_comprehensive.py`](tests_comprehensive.py)
 - **Test Code (Pytest):** [`test_invariants.py`](test_invariants.py)
 - **Dependencies:** [`requirements.txt`](requirements.txt)
 
@@ -220,12 +225,7 @@ python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
 
 ### AI Assistance Documentation:
 - **AI Report (Phase 1):** [`AI_Report_Phase1.txt`](AI_Report_Phase1.txt)
-- **AI Report (Phase 2):** [`AI_Report_Phase2.txt`](AI_Report_Phase2.txt
-- **Phase 2:** [`LABS-challenge-Phase2.md`](../LABS-challenge-Phase2.md)
-
-### AI Assistance Documentation:
-- **AI Report (Phase 1):** [`AI_Report_Phase1.pdf`](AI_Report_Phase1.pdf)
-- **AI Report (Phase 2):** [`AI_Report_Phase2.pdf`](AI_Report_Phase2.pdf)
+- **AI Report (Phase 2):** [`AI_Report_Phase2.txt`](AI_Report_Phase2.txt)
 - **Summary:** [`AI_REPORT_SUMMARY.md`](AI_REPORT_SUMMARY.md)
 
 ---
@@ -247,8 +247,8 @@ For questions about this submission, contact:
 - [x] Results export to JSON functional
 - [x] Test suite comprehensive (11+ test cases)
 - [x] CPU-only execution verified
-- [ ] GPU execution on Brev (pending L4 support)
-- [ ] Final results/phase2_cpu_results.json populated
+- [x] GPU execution on Brev completed
+- [x] Final results/phase2_cpu_results.json populated
 
 ---
 

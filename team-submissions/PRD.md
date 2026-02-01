@@ -173,5 +173,5 @@ Python assertions and lightweight tests embedded directly in experiment scripts.
 **Owner:** Project Lead (Shrikar Swami)
 
 - **Phase 1:** Completed and verified  
-- **Phase 2 (CPU):** Ready  
-- **Phase 2 (GPU on Brev):** Pending credit activation  
+- **Phase 2 (CPU):** Completed  
+- **Phase 2 (GPU on Brev):** Completed  

@@ -12,7 +12,7 @@ The Project Lead should fork this repository and share the forked repository lin
 **Phase 2 Submission (Due 10am eastern Sun Feb 1):**
 
 * [ ] **Final Code:** Notebooks and scripts for the Milestone 3 implementation. Add these files to a folder in this directory.  Include a README.md to guide the judges if you have multiple files.
-* [ ] **Test Suite:** `tests.py` or other documentation or scripts used for verifying your work. 
+* [ ] **Test Suite:** `tests_comprehensive.py` or other documentation or scripts used for verifying your work. 
 * [ ] **AI Report:** `AI_REPORT.md` (See [AI_REPORT-template.md](AI_REPORT-template.md)).
 * [ ] **Presentation:** Slides (Live) or MP4 (Remote).
 
@@ -39,7 +39,7 @@ This challenge is graded on **Rigorous Engineering**, not just raw speed. We are
     * Did you successfully accelerate the *Classical* component (e.g., using `cupy` for batch neighbor evaluation) or did you only accelerate the quantum circuit?
     * We reward the **rigorous implementation of creative ideas**. If your novel experiment fails to beat the baseline, document *why* in your report. A "Negative Result" backed by great engineering is a success.
 * **Verification [20 points]:**
-    * How much of your code is covered by the `tests.py` suite?
+    * How much of your code is covered by the `tests_comprehensive.py` suite?
     * Does the test suite catch physical violations?
 * **Communication & Analysis [20 points]:**
     * **Visualizations:** We expect professional data plotting. Do not just paste screenshots of code. We want to see generated plots (Time vs. N, Approximation Ratio vs. N) with clearly labeled axes comparing CPU vs. GPU performance.
