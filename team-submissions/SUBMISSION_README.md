@@ -17,11 +17,11 @@
 # Install dependencies
 pip install numpy pytest
 
-# Run unit tests (validates core LABS components)
-pytest tests/test_invariants.py -v
+# Run pytest-based invariant tests (validates core LABS components)
+pytest test_invariants.py -v
 
 # Run comprehensive test suite
-python tests.py
+python tests_comprehensive.py
 ```
 
 **Expected Output:**
@@ -134,18 +134,17 @@ python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
 │   ├── SUBMISSION_CHECKLIST.md     ← Deliverables checklist
 │   ├── PRD.md                      ← Product Requirements Document
 │   ├── TEST_SUITE.md               ← Test verification strategy
-│   ├── AI_Report_Phase1.pdf        ← AI agent workflow (Phase 1)
-│   ├── AI_Report_Phase2.pdf        ← AI agent workflow (Phase 2)
-│   └── AI_REPORT_SUMMARY.md        ← Executive summary of AI assistance
+│   ├── AI_Report_Phase1.txt        ← AI agent workflow (Phase 1)
+│   ├── AI_Report_Phase2.txt        ← AI agent workflow (Phase 2)
+│   ├── AI_REPORT_SUMMARY.md        ← Executive summary of AI assistance
+│   ├── test_invariants.py          ← Pytest-based invariant tests (CI/CD ready)
+│   ├── tests_comprehensive.py      ← Comprehensive Phase 1 & 2 tests
+│   └── requirements.txt            ← All dependencies needed
 │
 ├── tutorial_notebook/
 │   ├── 01_quantum_enhanced_optimization_LABS (1).ipynb  ← Main implementation
 │   └── auxiliary_files/
 │       └── labs_utils.py           ← Utility functions (theta computation, etc.)
-│
-├── tests.py                        ← Comprehensive test suite (Phase 1 & 2)
-├── tests/
-│   └── test_invariants.py          ← Pytest-based invariant validation
 │
 ├── results/
 │   └── phase2_cpu_results.json     ← Experiment results (placeholder/actual)
@@ -164,19 +163,24 @@ python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
 ### For Local Verification (No GPU):
 
 1. **Run unit tests:**
+   ``Install dependencies:**
    ```bash
-   python tests.py
+   pip install -r requirements.txt
    ```
 
-2. **Run pytest-based invariants:**
+2. **Run comprehensive test suite:**
    ```bash
-   pytest tests/test_invariants.py -v
+   python tests_comprehensive.py
    ```
 
-3. **Open and execute the main notebook:**
+3. **Run pytest-based invariants:**
    ```bash
-   jupyter notebook tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb
+   pytest test_invariants.py -v
    ```
+
+4. **Open and execute the main notebook:**
+   ```bash
+   jupyter notebook ../
    Execute cells 1–20 to validate Phase 1 exercises and symmetry checks.
 
 ### For GPU Acceleration (Brev):
@@ -202,20 +206,21 @@ python tutorial_notebook/01_quantum_enhanced_optimization_LABS\ \(1\).ipynb \
 
 ---
 
-## Important Files & Links
-
-### Deliverables:
-- **PRD (Planning):** [`PRD.md`](PRD.md)
-- **Test Strategy:** [`TEST_SUITE.md`](TEST_SUITE.md)
-- **Test Code (Root):** [`tests.py`](../tests.py)
-- **Test Code (Pytest):** [`tests/test_invariants.py`](../tests/test_invariants.py)
+## Important FiComprehensive):** [`tests_comprehensive.py`](tests_comprehensive.py)
+- **Test Code (Pytest):** [`test_invariants.py`](test_invariants.py)
+- **Dependencies:** [`requirements.txt`](requirements.txt)
 
 ### Implementation:
-- **Main Notebook:** [`tutorial_notebook/01_quantum_enhanced_optimization_LABS (1).ipynb`](../tutorial_notebook/01_quantum_enhanced_optimization_LABS%20(1).ipynb)
-- **Utilities:** [`tutorial_notebook/auxiliary_files/labs_utils.py`](../tutorial_notebook/auxiliary_files/labs_utils.py)
+- **Main Notebook:** [`../tutorial_notebook/01_quantum_enhanced_optimization_LABS (1).ipynb`](../tutorial_notebook/01_quantum_enhanced_optimization_LABS%20(1).ipynb)
+- **Utilities:** [`../tutorial_notebook/auxiliary_files/labs_utils.py`](../tutorial_notebook/auxiliary_files/labs_utils.py)
 
 ### Challenge Specs:
-- **Phase 1:** [`LABS-challenge-Phase1.md`](../LABS-challenge-Phase1.md)
+- **Phase 1:** [`../LABS-challenge-Phase1.md`](../LABS-challenge-Phase1.md)
+- **Phase 2:** [`../LABS-challenge-Phase2.md`](../LABS-challenge-Phase2.md)
+
+### AI Assistance Documentation:
+- **AI Report (Phase 1):** [`AI_Report_Phase1.txt`](AI_Report_Phase1.txt)
+- **AI Report (Phase 2):** [`AI_Report_Phase2.txt`](AI_Report_Phase2.txt
 - **Phase 2:** [`LABS-challenge-Phase2.md`](../LABS-challenge-Phase2.md)
 
 ### AI Assistance Documentation:
